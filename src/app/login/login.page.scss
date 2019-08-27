@@ -1,0 +1,131 @@
+
+  
+$color: #FF1166;
+$color-text: #ff9f1f;
+$color-tv: #9370db;
+$color-display: #fff;
+$color-btn: #fcd000;
+
+
+html {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+}
+.container{
+      position: relative;
+      margin: 50px auto;
+      text-align:center;  
+    }
+    .master{
+    --ion-background-color:#17202A;
+  }
+
+
+.tv {
+  width: 330px;
+  height: 330px;
+  border: 3px solid $color-tv;
+  border-radius: 50px;
+  margin: 50px auto;
+  box-shadow:
+      0 0 3px white,
+      0 0 5px transparentize(white, 0.5),
+      0 0 7px transparentize(white, 0.75),
+      0 0 9px $color-tv,
+      0 0 11px $color-tv,
+      0 0 13px $color-tv,
+      0 0 15px $color-tv,
+      inset 0 0 3px white,
+      inset 0 0 5px $color-tv,
+      inset 0 0 7px $color-tv,
+      inset 0 0 9px $color-tv,
+      inset 0 0 11px $color-tv,
+      inset 0 0 13px $color-tv,
+      inset 0 0 15px $color-tv;
+}
+
+
+   #message{
+      color:#f7f7f7;
+      text-shadow:0px 0px 2px #f7f7f7;
+    }
+    .glowbutton{
+      border-radius:10px;
+      display:inline-block;
+      width:50px;
+      height:50px;
+      text-align:center;
+      text-decoration:none;
+      border-size:1px;
+      border-style:solid;
+      text-align:center;  
+      background:#161616;
+      vertical-align: top;
+border-color:#5DADE2;
+      color:#5DADE2;
+       box-shadow:0px 0px 10px 5px #5DADE2,
+       inset 0px 0px 2px #5DADE2;
+      text-shadow:0px 0px 4px #5DADE2;
+    }
+    .submitbutton{
+      display:inline-block;
+      min-width:100px;
+      text-align:center;
+      text-decoration:none;
+      padding:10px 20px;
+      border-size:3px;
+      border-style:solid;
+      border-radius:10px;
+      background:#161616;
+
+      transition:all .1s linear;
+      margin:7px 20px;
+border-color:#5DADE2;
+      color:#5DADE2;
+       box-shadow:0px 0px 10px 5px #5DADE2,
+       inset 0px 0px 2px #5DADE2;
+      text-shadow:0px 0px 4px #5DADE2;
+    }
+   
+
+input[type=text], input[type=password],select {
+  
+  width: 80%;
+  margin: 8px 0;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  
+}
+
+input[type=submit] {
+  width: 40%;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #5DADE2;
+}
+p{
+    cursor: pointer;
+   font-size:20px;
+  padding:20px;
+  color:#fff;
+  text-align:center;
+  text-shadow:
+    0 0 5px #00ff66,
+    0 0 10px #00ff66,
+    0 0 15px #00ff66,
+    0 0 20px #00ff66,
+    0 0 25px #00ff66,
+    0 0 30px #00ff66
+    ;
+}

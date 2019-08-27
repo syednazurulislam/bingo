@@ -1,6 +1,10 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/theming/
 
+
+// Font path is used to include ionicons,
+// roboto, and noto sans fonts
+$font-path: "../assets/fonts";
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
@@ -74,4 +78,16 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+}
+
+
+// Fonts
+// --------------------------------------------------
+
+
+@font-face{
+  font-family:'pervitina';
+  font-style:normal;
+  font-weight: normal;
+  src:url('../assets/fonts/Pervitina-Dex-FFP.ttf');
 }

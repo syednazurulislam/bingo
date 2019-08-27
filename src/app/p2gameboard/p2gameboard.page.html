@@ -1,0 +1,56 @@
+<ion-content padding class="master">
+
+    <ion-fab top right edge>
+        <button ion-fab mini><ion-icon name="add"></ion-icon></button>
+        <ion-fab-list>
+        {{roomid}}
+        </ion-fab-list>
+      </ion-fab>
+    <div class="container topgap">
+        <button class="box smallbox" name="fa" (click)="myFunction('fa')"   [disabled]=fa.disable  [ngClass]=fa.classname><p>{{fa.value}}</p> </button>
+        <button class="box smallbox" name="fb" (click)="myFunction('fb')"   [disabled]=fb.disable  [ngClass]=fb.classname ><p>{{fb.value}}</p> </button>
+        <button class="box smallbox" name="fc" (click)="myFunction('fc')"   [disabled]=fc.disable  [ngClass]=fc.classname><p>{{fc.value}}</p> </button>
+        <button class="box smallbox" name="fd" (click)="myFunction('fd')"   [disabled]=fd.disable  [ngClass]=fd.classname><p>{{fd.value}}</p> </button>
+        <button class="box smallbox" name="fe" (click)="myFunction('fe')"   [disabled]=fe.disable  [ngClass]=fe.classname><p>{{fe.value}}</p> </button>
+      </div>
+        <div class="container">
+        <button class="box smallbox" name="ga" (click)="myFunction('ga')"    [disabled]=ga.disable [ngClass]=ga.classname><p>{{ga.value}}</p> </button>
+        <button class="box smallbox" name="gb" (click)="myFunction('gb')"    [disabled]=gb.disable [ngClass]=gb.classname><p>{{gb.value}}</p> </button>
+        <button class="box smallbox" name="gc" (click)="myFunction('gc')"    [disabled]=gc.disable [ngClass]=gc.classname><p>{{gc.value}}</p> </button>
+        <button class="box smallbox" name="gd" (click)="myFunction('gd')"    [disabled]=gd.disable [ngClass]=gd.classname><p>{{gd.value}}</p> </button>
+        <button class="box smallbox" name="ge" (click)="myFunction('ge')"    [disabled]=ge.disable [ngClass]=ge.classname><p>{{ge.value}}</p> </button>
+      </div>
+        <div class="container">
+        <button class="box smallbox" name="ha" (click)="myFunction('ha')"     [disabled]=ha.disable  [ngClass]=ha.classname><p>{{ha.value}}</p> </button>
+        <button class="box smallbox" name="hb" (click)="myFunction('hb')"     [disabled]=hb.disable  [ngClass]=hb.classname><p>{{hb.value}}</p> </button>
+        <button class="box smallbox" name="hc" (click)="myFunction('hc')"     [disabled]=hc.disable  [ngClass]=hc.classname><p>{{hc.value}}</p> </button>
+        <button class="box smallbox" name="hd" (click)="myFunction('hd')"     [disabled]=hd.disable  [ngClass]=hd.classname><p>{{hd.value}}</p> </button>
+        <button class="box smallbox" name="he" (click)="myFunction('he')"     [disabled]=he.disable  [ngClass]=he.classname><p>{{he.value}}</p> </button>
+      </div>
+        <div class="container">
+        <button class="box smallbox" name="ia" (click)="myFunction('ia')"      [disabled]=ia.disable  [ngClass]=ia.classname><p>{{ia.value}}</p> </button>
+        <button class="box smallbox" name="ib" (click)="myFunction('ib')"      [disabled]=ib.disable  [ngClass]=ib.classname><p>{{ib.value}}</p> </button>
+        <button class="box smallbox" name="ic" (click)="myFunction('ic')"      [disabled]=ic.disable  [ngClass]=ic.classname><p>{{ic.value}}</p> </button>
+        <button class="box smallbox" name="id" (click)="myFunction('id')"      [disabled]=id.disable  [ngClass]=id.classname><p>{{id.value}}</p> </button>
+        <button class="box smallbox" name="ie" (click)="myFunction('ie')"      [disabled]=ie.disable  [ngClass]=ie.classname><p>{{ie.value}}</p> </button>
+      </div>
+        <div class="container">
+        <button class="box smallbox" name="ja" (click)="myFunction('ja')"        [disabled]=ja.disable [ngClass]=ja.classname><p>{{ ja.value }}</p> </button>
+        <button class="box smallbox" name="jb" (click)="myFunction('jb')"        [disabled]=jb.disable [ngClass]=jb.classname><p>{{jb.value}}</p> </button>
+        <button class="box smallbox" name="jc" (click)="myFunction('jc')"        [disabled]=jc.disable [ngClass]=jc.classname><p>{{jc.value}}</p> </button>
+        <button class="box smallbox" name="jd" (click)="myFunction('jd')"        [disabled]=jd.disable [ngClass]=jd.classname><p>{{ jd.value}}</p> </button>
+        <button class="box smallbox" name="je" (click)="myFunction('je')"        [disabled]=je.disable [ngClass]=je.classname><p>{{ je.value}}</p> </button>
+    </div>
+    <div class="container">
+    <div class="my">
+      {{bingo}}
+    </div>
+    </div>
+    <div class="container">
+      <input type="button"  [ngClass]=p1submit value="Player1" (click)="create()">
+      <input type="button"  [ngClass]=p2submit value="Ready" (click)="Ready()" [disabled]=p2disable>
+      </div>
+
+
+</ion-content>
+

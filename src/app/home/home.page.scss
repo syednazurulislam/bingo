@@ -1,0 +1,68 @@
+.master{
+    --ion-background-color:#17202A;
+
+}
+
+img {
+    border: 1px solid #ff6900;
+
+     border-radius: 5px;
+      margin-top: 15px;
+      margin-right: 6px;
+
+     width: 100%;
+     max-width: 175px;
+     height: auto;
+         transition: transform ease 0.4s;
+   
+   }
+   img:hover {
+     
+       transform: scale(1.1);
+   }
+   .list {
+    justify-content: center;
+     display: flex!important; 
+     align-items: center!important;
+  }
+
+.trail{
+}
+
+//   new css
+.container{
+    position: relative;
+    margin: 6px auto;
+    text-align:center;  
+  }
+  h1{
+    font-size:50px;
+    font-family:'pervitina';
+    color: rgba(255,255,255,1);
+    -webkit-transition: all .2s cubic-bezier(1.000, -0.360, 0.000, 1.385);
+    text-shadow:0px 0px 10px rgba(255,255,255,.7);
+  }
+  .box {
+    border-radius: 10px;
+    position:relative;
+    text-align:center;  
+    display:inline-block;
+    background:#161616;
+    margin-right: 3px;
+    width: 48%;
+    height: 200px;
+    box-shadow:
+/* Underglow */ 0px 5px 2px rgb(10, 27, 185),
+/* Outerglow */ 0px 12px 40px rgba(79, 50, 248, 0.3),
+/* Innerglow */ 0px -5px 10px rgba(79, 50, 248, 0.1) inset,
+0px 0px 5px rgb(68, 55, 255),
+0px 1px 3px rgb(79, 50, 248,);
+-webkit-transition: all .3s cubic-bezier(1.000, -0.360, 0.000, 1.385);
+  }
+  .box p{
+    font-size:40px;
+    font-family:'pervitina';  
+    color:rgba(0,200,0,1);
+    -webkit-transition: all .2s cubic-bezier(1.000, -0.360, 0.000, 1.385);
+  text-shadow:0px 0px 10px rgba(50,255,50,.4);
+  }

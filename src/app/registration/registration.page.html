@@ -1,0 +1,62 @@
+
+
+<ion-content class="master">
+
+  <div class="tv">
+    <div class="container">
+   <div>
+     <p class="mediumtext">Register</p>
+      </div>
+<form novalidate [formGroup]="registerationform" (ngSubmit)="register(registerationform.value)" >
+      <input type="text" class="glowbutton" id ="phonenumber"  formControlName="PhoneNumber"  (keyup)="search($event)" name="PhoneNumber" placeholder="Phone Number"> 
+      <div>
+          <p>{{phonenumbererror}}</p>
+        </div>
+      <ng-container *ngFor="let error of error_messages.PhoneNumber">
+
+     <div *ngIf="registerationform.get('PhoneNumber').hasError(error.type)&&(registerationform.get('PhoneNumber').dirty|| registerationform.get('PhoneNumber').touched)">
+       {{error.message}}
+     </div> 
+     
+   </ng-container>
+
+    <input type="text" class="glowbutton" id="Email"  name="Email" formControlName="Email" (keyup)="search($event)" placeholder="Email">
+    <div>
+      <p>{{emailerror}}</p>
+    </div>
+    <ng-container *ngFor="let error of error_messages.Email">
+        <div *ngIf="registerationform.get('Email').hasError(error.type)&&(registerationform.get('Email').dirty|| registerationform.get('Email').touched)">
+          {{error.message}}
+        </div> 
+   
+      </ng-container>
+    <input type="text" class="glowbutton" id="Name"  name="Name" formControlName="Name" (keyup)="search($event)" placeholder="Name">
+    <div>
+      <p>{{nameerror}}</p>
+    </div>
+    <ng-container *ngFor="let error of error_messages.Name">
+        <div *ngIf="registerationform.get('Name').hasError(error.type)&&(registerationform.get('Name').dirty|| registerationform.get('Name').touched)">
+          {{error.message}}
+        </div> 
+   
+      </ng-container>
+
+    <input type="password"  class="glowbutton" id="Password"  name="Password" formControlName="Password" placeholder="Password">
+
+    <ng-container *ngFor="let error of error_messages.Password">
+        <div *ngIf="registerationform.get('Password').hasError(error.type)&&(registerationform.get('Password').dirty|| registerationform.get('Password').touched)">
+          {{error.message}}
+        </div> 
+   
+      </ng-container>
+  
+    <input type="submit"  class="submitbutton" value="Submit" >
+      <div>
+      <p class="smalltext" (click)="gotologin()">Go to Sign-in </p>
+</div>
+</form>
+      </div>
+    </div>
+
+
+</ion-content>

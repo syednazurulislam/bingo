@@ -1,0 +1,76 @@
+.master{
+    --ion-background-color:#17202A;
+
+}
+ion-searchbar{
+    --ion-background-color:#17202A;
+    border-radius:10px;
+    text-align:center;
+    text-decoration:none;
+    border-size:1px;
+    border-style:solid; 
+    text-align:center;  
+    vertical-align: top;
+    margin: 10px 0px;
+    padding: 5px;
+
+
+}
+ion-item{
+    --ion-background-color:#17202A;
+    border-radius:10px;
+    text-align:center;
+    text-decoration:none;
+    text-align:center;  
+    background:#161616;
+}
+
+.button1{  
+    border-color:#5FD100;
+    color:#5FD100;
+    box-shadow:0px 0px 2px 1px #5FD100,
+      inset 0px 0px 2px #5FD100;
+    text-shadow:0px 0px 2px #5FD100;
+  }
+  .button1:hover{
+    box-shadow:0px 0px 10px 5px #5FD100,
+     inset 0px 0px 7px #5FD100;
+    text-shadow:0px 0px 4px #5FD100;
+  }
+  .button2{  
+    border-color:#5DADE2;
+    color:#5DADE2;
+    box-shadow:0px 0px 2px 1px #5DADE2,
+      inset 0px 0px 2px #5DADE2;
+    text-shadow:0px 0px 2px #5DADE2;
+  }
+  .button2:hover{
+    box-shadow:0px 0px 10px 5px #5DADE2,
+     inset 0px 0px 2px #5DADE2;
+    text-shadow:0px 0px 4px #5DADE2;
+  }
+  
+  .button3{  
+    border-color:#F70420;
+    color:#F70420;
+    box-shadow:0px 0px 2px 1px #F70420,
+      inset 0px 0px 2px #F70420;
+    text-shadow:0px 0px 2px #F70420;
+  }
+  .button3:hover{
+    box-shadow:0px 0px 10px 5px #F70420,
+     inset 0px 0px 7px #F70420;
+    text-shadow:0px 0px 4px #F70420;
+  }
+.button4{  
+    border-color:#03B3B3;
+    color:#03B3B3;
+    box-shadow:0px 0px 2px 1px #03B3B3,
+      inset 0px 0px 2px #03b3b3;
+    text-shadow:0px 0px 2px #03B3B3;
+  }
+  .button4:hover{
+    box-shadow:0px 0px 10px 5px #03B3B3,
+     inset 0px 0px 7px #03B3B3;
+    text-shadow:0px 0px 4px #03B3B3;
+  }

@@ -1,0 +1,22 @@
+
+
+<ion-content padding class="master">
+
+  <div class="tv">
+    <div class="container">
+   
+    <input type="text" class="glowbutton" id="fname" name="firstname" [(ngModel)]="PhoneNumber" placeholder="Phone Number">
+
+    <input type="password"  class="glowbutton" id="lname" name="lastname" [(ngModel)]="Password" placeholder="password">
+
+    
+  
+    <input type="submit"  class="submitbutton" value="login" (click)="login()">
+      <div>
+      <p (click)="gotoRegister()">Create Account </p>
+</div>
+      </div>
+    </div>
+
+
+</ion-content>

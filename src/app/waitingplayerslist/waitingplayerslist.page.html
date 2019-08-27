@@ -1,0 +1,11 @@
+
+
+<ion-content padding class="master" >
+    <ion-searchbar class="button1" (ionInput)="getItems($event)"></ion-searchbar>
+    <ion-list>
+      <ion-item   class="button2" *ngFor="let item of items" (click)="joinbingotable(item)">
+      {{ item }}
+        
+      </ion-item>
+    </ion-list>
+  </ion-content>
