@@ -1,55 +1,48 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
+import { LoginGuardService } from '../services/Loginguard';
 
 const routes: Routes = [
   {
-    path: 'tabs',
+    path: 'add',
     component: TabsPage,
     children: [
       {
-        path: 'tab2',
-        children: [
+        path: 'home', 
+        children:[
           {
-            path: '',
-            loadChildren: () =>
-              import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+            path:'',
+            //  loadChildren:'../home/home.module#HomePageModule',
+            loadChildren:() => import('../home/home.module').then(n=>n.HomePageModule),
+            canActivate :[LoginGuardService]
+
+          },
+        ]
+          },
+          {
+            path: 'steps',
+            // loadChildren:'../tab1/tab1.module#Tab1PageModule'
+            loadChildren:() => import('../tab2/tab2.module').then(n=>n.Tab2PageModule)
+
+          },
+          
+          {
+            path: 'profile',
+            loadChildren:() => import('../tab1/tab1.module').then(n=>n.Tab1PageModule)
+            
           }
         ]
+        
+         
       },
-      {
-        path: 'tab1',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('../tab1/tab1.module').then(m => m.Tab1PageModule)
-          }
-        ]
-      },
-      {
-        path: 'tab3',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('../tab3/tab3.module').then(m => m.Tab3PageModule)
-          }
-        ]
-      },
-      {
-        path: '',
-        redirectTo: '/tabs/tab1',
-        pathMatch: 'full'
-      }
+      
+
+     
+      {path:'',redirectTo:'add/home',pathMatch:'full'}
+     
     ]
-  },
-  {
-    path: '',
-    redirectTo: '/tabs/tab1',
-    pathMatch: 'full'
-  }
-];
+  
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

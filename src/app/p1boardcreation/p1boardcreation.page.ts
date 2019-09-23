@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController} from '@ionic/angular';
+import { NavController,AlertController,LoadingController, Platform} from '@ionic/angular';
 import{HttpClient,HttpHeaders} from '@angular/common/http';
-import {  Directive,ElementRef, ViewChild } from '@angular/core';
 import {environment} from "../../config/url";
 import { Storage } from '@ionic/storage';
 import { Router,NavigationExtras } from '@angular/router';
-import {AuthenticationService} from '../services/authentication.service';
+import { Network } from '@ionic-native/network/ngx';
 import {PlayeroneService} from '../playerone.service';
+import {NointernetService} from '../nointernet.service'
 let url = environment.url;
 @Component({
   selector: 'app-p1boardcreation',
@@ -17,10 +17,17 @@ export class P1boardcreationPage implements OnInit {
   
   keyboard: any;
   url:string;
- 
+  serverdata={};
+ token:any;
 playeroneboard=[];
 i:any=1;
 dataexists:boolean;
+public unsubscribeBackEvent:any;
+privatekeynumber="";
+otp1:any;
+otp2:any;
+otp3:any;
+otp4:any;
 fa:any; fb:any; fc:any; fd:any; fe:any;
 ga:any; gb:any; gc:any; gd:any; ge:any;
 ha:any; hb:any; hc:any; hd:any; he:any;
@@ -30,15 +37,40 @@ b1:boolean;
 // array1=['fa','fb','fc','fd','fe', 'ga','gb','gc','gd','ge','ha','hb','hc','hd','he','ia','ib','ic'
 // ,'id','ie','ja','jb','jc','jd','je'];
  bingotable:any = {};
-
+ privatekey=false;
+ disconnectsubscription:any;
 //  public navCtrl: NavController, public navParams: NavParams,public http:Http, public https:HttpClient
-  constructor( public navCtrl: NavController,public authservice:AuthenticationService,public playeroneservice:PlayeroneService, public router :Router,public https:HttpClient, public storage:Storage,public Router:Router) {
-    //  this.authservice.setValue(false);
+  constructor( public navCtrl: NavController,
+               public alertctrl:AlertController,
+               public loader:LoadingController,
+               public playeroneservice:PlayeroneService,
+               public platform:Platform,
+               public router :Router,
+              public https:HttpClient, 
+              public storage:Storage,
+              public Router:Router,
+              public network:Network,
+              private nointernet:NointernetService) {
+               
     this.url=url;
-alert("in p1 creation page");
+    this.playeroneservice.p1socketconnection=true;
+
    }
 
   ngOnInit() {
+    this.intializeBackButtonCustomHandler();
+  }
+  intializeBackButtonCustomHandler():void{
+    this.unsubscribeBackEvent=this.platform.backButton.subscribeWithPriority(999999,()=>{
+      this.loader.dismiss();
+      this.router.navigate(['/home'],{replaceUrl:true});
+      
+    })
+  }
+  ionViewWillLeave(){
+    this.unsubscribeBackEvent.unsubscribe();
+    this.unsubscribeBackEvent().unsubscribe();
+    this.unsubscribeBackEvent&& this.unsubscribeBackEvent();
   }
 
   myFunction(x) {
@@ -48,8 +80,13 @@ alert("in p1 creation page");
        if(this.i<25){
          this.i++;
        }
+
+      
      }
 
+    //  ionViewWillLeave(){
+    //   this.disconnectsubscription.unsubscribe();
+    // }
 
 
      secondmethod(){
@@ -88,29 +125,54 @@ alert("in p1 creation page");
 
 
  createteble(){
-  alert("im in  createteble");
-  var token;
-  var data={
-    PlayerOneBoard:this.playeroneboard,
-    PlayerOneDetails:{userid:"1",username:"sam"}
+  
+  if(this.network.type=='none'){
+    this.alertpresent('Please Check Your Internet Connection');
+  }else{
+  if(JSON.stringify(this.bingotable).length==192){
+    this.presentLoading().then(()=>{
+      if(this.privatekeynumber!=""){
+        this.serverdata={
+          PlayerOneBoard:this.playeroneboard,
+          Privatekey:this.privatekeynumber.substring(0,4)
+        }
+        
+       }else{
+        this.serverdata={
+          PlayerOneBoard:this.playeroneboard,
+        }
+       }
+       
+        this.storage.get("usertoken").then(val=>{
+           this.token=val;
+           
+           const httpoptions={
+             headers: new HttpHeaders({ 'Authorization':this.token})
+           }
+           this.https.post(this.url+"/api/createbingoboard",this.serverdata, httpoptions).subscribe(result=>{
+             this.playeroneservice.storage=result;
+          this.loader.dismiss();
+         this.navCtrl.navigateForward(['/p1gameboard'],{replaceUrl:true});
+        
+         
+         })
+        })
+    });
+   
   }
-  alert(JSON.stringify(data));
-  this.storage.get("usertoken").then(val=>{
-     token=val;
-    alert(token);
-  })
-  let headers= new HttpHeaders();
-
-  headers.append('authorization',token);
-  this.https.post(this.url+"/api/createbingoboard",data, {headers:headers}).subscribe(result=>{
-    this.playeroneservice.storage=result;
-this.navCtrl.navigateForward(['/p1gameboard'],{replaceUrl:true});
-
-})
- //})
+  else{
+    
+this.showAlert('please fill all the fields');
+  }
+  }
 }
-
-
+private(){
+  if(this.privatekey){
+  this.privatekey=false
+}else{
+  this.privatekey=true
+}
+}
 cleartable(){
   this.bingotable={}
  this.playeroneboard.length=0;
@@ -119,4 +181,47 @@ cleartable(){
 }
 
 
+
+moveFocus(nextElement,data) {
+ console.log(data.key);
+  this.privatekeynumber+=data.key;
+  nextElement.setFocus();
+}
+Focus(data){
+  this.privatekeynumber+=data.key;
+  console.log(this.privatekeynumber);
+
+}
+async showAlert(msg){
+  let alert= await this.alertctrl.create({
+    header:'Message',
+    message:msg,
+    buttons:['OK'],
+    cssClass:'alertctrlcss'
+    
+
+
+  })
+  await alert.present();
+
+}
+async presentLoading(){
+  const loading=await this.loader.create({message:"please wait ",cssClass:'custom-loader-class'});
+await loading.present();
+}
+
+async alertpresent(mgs){
+  let alert = await this.alertctrl.create({
+    header:'ERROR MESSAGE',
+    message:mgs,
+    buttons:[{
+      text:'OK',
+      handler:()=>{
+      
+      }
+    }],
+    cssClass:'alertctrlcss'
+  })
+   await alert.present();
+}
 }

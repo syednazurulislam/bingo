@@ -15,14 +15,16 @@
 
 
 <ion-content padding class="master">
+ <div> <ion-fab horizontal="start" vertical="top" slot="fixed" activated=true>
+   
+    <ion-icon name="md-information" class="ibutton"></ion-icon>
   
-    <!-- <div [ngClass]=showboard> -->
-       <!-- <ion-fab top right edge>
-           <button ion-fab mini><ion-icon name="add"></ion-icon></button>
-           <ion-fab-list> -->
-           <!-- {{roomid}} -->
-           <!-- </ion-fab-list>
-         </ion-fab> -->
+  <ion-fab-list side="end">
+      <ion-chip class="tooltip">
+          <ion-label><strong>ID:</strong>{{roomname}}</ion-label>
+      </ion-chip>
+  </ion-fab-list>
+</ion-fab></div>
      <div class="container topgap">
          <button class="box smallbox" name="fa" (click)="myFunction('fa')"   [disabled]=fa.disable  [ngClass]=fa.classname><p>{{fa.value}}</p> </button>
          <button class="box smallbox" name="fb" (click)="myFunction('fb')"   [disabled]=fb.disable  [ngClass]=fb.classname > <p>{{fb.value}}</p> </button>
@@ -73,9 +75,14 @@
      </div>
      <div class="container">
        <input type="button"   [ngClass]=p1submit value="Ready"  (click)="Ready()" [disabled]=p1disable >
-       <input type="button"   [ngClass]=p2submit value="Player" (click)="cleartable()">
+       <input type="button"   [ngClass]=p2submit value="Player" >
        </div>
  
- 
- 
+<!-- <div class="loader"></div> -->
+<!-- <span class="text-neon text2">{{turnstatus}}</span> -->
+<!-- Compressing bars component -->
+<div class="container">
+  <div  [ngClass]=turnstatuscss>    {{turnstatus}}
+    </div>
+</div>
  </ion-content>

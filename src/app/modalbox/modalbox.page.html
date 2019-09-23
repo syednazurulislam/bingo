@@ -1,0 +1,80 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>modalbox</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+
+<ion-content padding class="modal">
+  
+
+
+
+
+  <div *ngIf="win">
+
+  <div class="container">
+
+
+      <div class="pyro">
+          
+         
+    <div class="infoi"><img src="../../assets/imgs/winicon.png"> 
+      <div class="container" align="center">
+
+      <button class="button" (click)="newgame()">Button</button>
+</div>
+    </div>
+      
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="before"></div>
+          <div class="after"></div>
+    </div>
+   
+  </div>
+</div>
+<div *ngIf=lost>
+    <div class="infoi"><img src="../../assets/imgs/losticon.png">
+      <div class="container" align="center">
+
+      <button class="button" (click)="newgame()">Button</button>
+</div>
+    </div>
+</div>
+<div *ngIf=tie>
+    <div class="container">
+
+
+            
+           
+      <div class="infoi"><img src="../../assets/imgs/tie.png">
+        <div class="container" align="center">
+
+        <button class="button" (click)="newgame()">Button</button>
+</div>
+      </div>
+        
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        
+      </div>
+     
+</div>
+</ion-content>

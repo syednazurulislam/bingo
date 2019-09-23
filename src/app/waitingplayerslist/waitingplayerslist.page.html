@@ -1,11 +1,19 @@
 
 
 <ion-content padding class="master" >
+<ion-refresher slot="fixed" class="refresher-ios" (ionRefresh)="ionRefresh($event)" >
+  <ion-refresher-content 
+  pullingIcon="arrow-dropdown" 
+  pullingText="Pull to refresh" 
+  refreshingSpinner="circles" 
+  refreshingText="Refreshing...">
+
+  </ion-refresher-content>
+</ion-refresher>
     <ion-searchbar class="button1" (ionInput)="getItems($event)"></ion-searchbar>
     <ion-list>
-      <ion-item   class="button2" *ngFor="let item of items" (click)="joinbingotable(item)">
-      {{ item }}
-        
+      <ion-item   class="button2" *ngFor="let item of items" (click)="joinbingotable(item._id)">
+      {{ item.BoardId }}  
       </ion-item>
     </ion-list>
   </ion-content>

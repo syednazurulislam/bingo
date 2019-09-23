@@ -48,4 +48,28 @@
         <input type="button" class='submitbutton button4' value="go" (click)="createteble()">
         <input type="button"  class='submitbutton button3' value="clear table" (click)="cleartable()">
         </div>
+        <div class="container" *ngIf="privatekey">
+        <p>plese enter a private key</p>
+        <ion-grid>
+      
+           
+           
+                <ion-input text-center type="tel" class='glowbutton button1' maxlength="1" tabindex="1" [(ngModel)]="otp1"  (keyup)="moveFocus(b,$event)"></ion-input>
+             
+             
+        
+                <ion-input text-center type="tel" class='glowbutton button1' maxlength="1" tabindex="2" #b [(ngModel)]="otp2" (keyup)="moveFocus(c,$event)"
+                  ></ion-input>
+                
+           
+                <ion-input text-center type="tel" class='glowbutton button1' maxlength="1" tabindex="3" #c [(ngModel)]="otp3" (keyup)="moveFocus(d,$event)"
+                  ></ion-input>
+             
+                <!-- <ion-item> -->
+                <ion-input text-center type="tel" class='glowbutton button1' maxlength="1" [(ngModel)]="otp4" tabindex="4" #d (keyup)="Focus($event)"
+                  ></ion-input>
+                <!-- </ion-item> -->
+            
+          </ion-grid>
+</div>
 </ion-content>

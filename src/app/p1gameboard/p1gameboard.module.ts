@@ -6,6 +6,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { IonicModule } from '@ionic/angular';
 
 import { P1gameboardPage } from './p1gameboard.page';
+import { CanDeactivateGuard } from '../services/can-deactivate-guard.service';
 //   import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 //  import {environment} from '../../config/url';
 // // let url1 = environment.url1;
@@ -13,7 +14,8 @@ import { P1gameboardPage } from './p1gameboard.page';
 const routes: Routes = [
   {
     path: '',
-    component: P1gameboardPage
+    component: P1gameboardPage,
+    // canDeactivate:[CanDeactivateGuard]
   }
 ];
 //  let config={

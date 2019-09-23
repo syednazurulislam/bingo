@@ -1,11 +1,15 @@
 <ion-content padding class="master">
 
-    <ion-fab top right edge>
-        <button ion-fab mini><ion-icon name="add"></ion-icon></button>
-        <ion-fab-list>
-        {{roomid}}
-        </ion-fab-list>
-      </ion-fab>
+    <div> <ion-fab horizontal="start" vertical="top" slot="fixed" activated=true>
+   
+        <ion-icon name="md-information" class="ibutton"></ion-icon>
+      
+      <ion-fab-list side="end">
+          <ion-chip class="tooltip">
+              <ion-label><strong>ID:</strong>{{roomname}}</ion-label>
+          </ion-chip>
+      </ion-fab-list>
+    </ion-fab></div>
     <div class="container topgap">
         <button class="box smallbox" name="fa" (click)="myFunction('fa')"   [disabled]=fa.disable  [ngClass]=fa.classname><p>{{fa.value}}</p> </button>
         <button class="box smallbox" name="fb" (click)="myFunction('fb')"   [disabled]=fb.disable  [ngClass]=fb.classname ><p>{{fb.value}}</p> </button>
@@ -51,6 +55,10 @@
       <input type="button"  [ngClass]=p2submit value="Ready" (click)="Ready()" [disabled]=p2disable>
       </div>
 
-
+      <div class="container">
+          <div  [ngClass]=turnstatuscss>    {{turnstatus}}
+            </div>
+        </div>
+        
 </ion-content>
 

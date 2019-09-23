@@ -1,4 +1,139 @@
-.welcome-card img {
-  max-height: 35vh;
-  overflow: hidden;
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: 6px auto;
+ text-align:center;   
+}
+.container1 {
+  position: relative;
+  margin: 6px auto;
+  text-align:center; 
+}
+.container2 {
+
+  margin: 15% auto;
+  text-align:center; 
+  width: 320px;
+text-decoration:none;
+padding:10px 20px;
+border-width: 3px;
+border-style:solid;
+border-radius:10px;
+border-color:#5DADE2;
+color:#5DADE2;
+box-shadow:0px 0px 2px 1px #5DADE2,
+inset 0px 0px 2px #5DADE2;
+text-shadow:0px 0px 2px #5DADE2;
+}
+.sign {
+-ms-transform: rotate(-3deg);
+-webkit-transform: rotate(-3deg);
+transform: rotate(-3deg);
+}
+.body {
+--ion-background-color:#17202A;
+display:inline-block;
+min-width:100px;
+text-decoration:none;
+padding:10px 20px;
+
+}
+#title {
+font-size: 60px;
+}
+#trav {
+-webkit-animation: blink 0.01s infinite alternate;
+-moz-animation: blink 0.01s infinite alternate;
+-o-animation: blink 0.01s infinite alternate;
+animation: blink 0.01s infinite alternate;
+}
+
+.profilename{
+  font-size:35px;
+  font-family:'Stricken';
+  color: rgba(255,255,255,1);
+  -webkit-transition: all .2s cubic-bezier(1.000, -0.360, 0.000, 1.385);
+  text-shadow:0px 0px 10px rgba(255,255,255,.7);
+}
+h1{
+  font-size:50px;
+  font-family:'pervitina';
+  color: rgba(255,255,255,1);
+  -webkit-transition: all .2s cubic-bezier(1.000, -0.360, 0.000, 1.385);
+  text-shadow:0px 0px 10px rgba(255,255,255,.7);
+}
+#fade {
+opacity: 0.8;
+color: #ebffff;
+text-shadow: 2px 2px 1px rgba(0,0,0,0.3), 0 0px 15px #fff, 0 0 10px #38eeff, 0 0 50px #38eeff;
+-webkit-animation: fade 3s infinite alternate;
+-moz-animation: fade 3s infinite alternate;
+-o-animation: fade 3s infinite alternate;
+animation: fade 3s infinite alternate;
+}
+.neon-blue {
+margin: 0 auto;
+text-align: center;
+color: #ebffff;
+text-shadow: 2px 2px 1px rgba(0,0,0,0.3), 0 0px 15px #fff, 0 0 10px #38eeff, 0 0 50px #38eeff;
+}
+
+
+@keyframes fade {
+40% {
+  opacity: 0.8;
+}
+42% {
+  opacity: 0.1;
+}
+43% {
+  opacity: 0.8;
+}
+45% {
+  opacity: 0.1;
+}
+46% {
+  opacity: 0.8;
+}
+}
+
+.ibutton{
+  width:40px;
+  height:40px;
+  color:#F70420;
+  text-shadow:0px 0px 2px #F70420;
+  font-size:40px;
+  font-family:'dk';
+  text-shadow:0px 0px 10px rgba(238, 38, 38, 0.7);
+}
+.labels{
+  font-size:32px;
+  font-family:'dk';
+  color: rgba(255,255,255,1);
+  text-shadow:0px 0px 10px rgba(255,255,255,.7);
+}
+ion-item{
+  --border-color:#17202A;
+}
+.logout{
+  display:inline-block;
+  min-width:100px;
+  text-align:center;
+  text-decoration:none;
+  padding:10px 20px;
+  border-size:3px;
+  border-style:solid;
+  border-radius:10px;
+  background:#161616;
+  transition:all .1s linear;
+  margin:7px 20px;
+  border-color:#5FD100;
+  color:#5FD100;
+  box-shadow:0px 0px 2px 1px #5FD100,
+    inset 0px 0px 2px #5FD100;
+  text-shadow:0px 0px 2px #5FD100;
 }

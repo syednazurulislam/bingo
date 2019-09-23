@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { PlayeroneService } from './playerone.service';
+import { NointernetService } from './nointernet.service';
 
-describe('PlayeroneService', () => {
+describe('NointernetService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: PlayeroneService = TestBed.get(PlayeroneService);
+    const service: NointernetService = TestBed.get(NointernetService);
     expect(service).toBeTruthy();
   });
 });

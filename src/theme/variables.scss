@@ -5,6 +5,10 @@
 // Font path is used to include ionicons,
 // roboto, and noto sans fonts
 $font-path: "../assets/fonts";
+
+
+
+
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
@@ -78,6 +82,7 @@ $font-path: "../assets/fonts";
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
 }
 
 
@@ -90,4 +95,25 @@ $font-path: "../assets/fonts";
   font-style:normal;
   font-weight: normal;
   src:url('../assets/fonts/Pervitina-Dex-FFP.ttf');
+}
+
+@font-face{
+  font-family:'Darkline';
+  font-style:normal;
+  font-weight: normal;
+  src:url('../assets/fonts/Darkline.ttf');
+}
+
+@font-face{
+  font-family:'Dk';
+  font-style:normal;
+  font-weight: normal;
+  src:url('../assets/fonts/DK\ Hand.ttf');
+}
+
+@font-face{
+  font-family:'Stricken';
+  font-style:normal;
+  font-weight: normal;
+  src:url('../assets/fonts/Stricken\ Brush\ \(DEMO\).ttf');
 }

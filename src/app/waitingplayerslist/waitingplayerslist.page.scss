@@ -74,3 +74,18 @@ ion-item{
      inset 0px 0px 7px #03B3B3;
     text-shadow:0px 0px 4px #03B3B3;
   }
+  
+  ion-refresher{
+     background-color: #17202A;
+     padding-bottom: 150px;
+    // --ion-background-color:
+}
+
+ion-refresher-content{
+  background-color: #17202A;
+  padding-top: 50px;
+  // --refreshingText-colour:#5DADE2;
+  --color:#5DADE2!important;
+  // --refreshingSpinner-color:#5DADE2;
+
+}

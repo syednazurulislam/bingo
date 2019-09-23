@@ -24,3 +24,65 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+
+.modal-transparency{
+    --background:transparent!important
+}
+
+ion-loading.custom-loader-class{
+   
+   .loading-wrapper{
+    display:inline-block;
+    min-width:100px;
+    text-align:center;
+    text-decoration:none;
+    padding:10px 20px;
+    border-size:3px;
+    border-style:solid;
+    border-radius:10px;
+    background:#161616;
+
+    transition:all .1s linear;
+    margin:7px 20px;
+     border-color:#5DADE2;
+    color:#5DADE2;
+    box-shadow:0px 0px 2px 1px #5DADE2,
+      inset 0px 0px 2px #5DADE2;
+    text-shadow:0px 0px 2px #5DADE2;
+
+   }
+   
+    --spinner-color:#F94701;
+ 
+}   
+
+ion-alert.alertctrlcss{
+    .alert-wrapper{
+    display:inline-block;
+    min-width:100px;
+    text-align:center;
+    text-decoration-color: #F94701;
+    padding:10px 20px;
+    border-size:3px;
+    border-style:solid;
+    border-radius:10px;
+    background:#161616;
+
+    transition:all .1s linear;
+    margin:7px 20px;
+     border-color:#5DADE2;
+    color:#5DADE2;
+    box-shadow:0px 0px 2px 1px #5DADE2,
+      inset 0px 0px 2px #5DADE2;
+    text-shadow:0px 0px 2px #5DADE2;
+}
+.alert-input{
+  color:#5DADE2;
+
+}
+}
+
+
+.refresher-ios .refresher-pulling-icon, .refresher-ios .refresher-pulling-text, .refresher-ios .refresher-refreshing-icon, .refresher-ios .refresher-refreshing-text { color: var(--ion-text-color,#5DADE2
+  ); }
