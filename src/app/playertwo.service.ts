@@ -11,7 +11,7 @@ public p2socketconnection:boolean;
 socketService:any;
 socketObserver:any;
 p2gameboard:boolean=false;
-
+public BoardId:any;
 constructor(private sockets:Socket) { 
   this.socketService= Observable.create(observer=>{
 this.socketObserver=observer;

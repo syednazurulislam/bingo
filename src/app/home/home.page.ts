@@ -16,7 +16,7 @@ export class HomePage implements OnInit{
   constructor(private router:Router,private playeroneservice:PlayeroneService,private loading:LoadingController,private playertwoservice:PlayertwoService,private navctrl:NavController,private nointernetservice:NointernetService, public network:Network,private alertctrl:AlertController) {
    this.playeroneservice.p1gameboard=false;
    this.playertwoservice.p2gameboard=false;
-   this.loading.dismiss();
+   
   
    
    }

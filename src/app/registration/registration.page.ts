@@ -22,6 +22,7 @@ phonenumbererror:string='';
 emailerror:string='';
 nameerror:string='';
 url:string;
+loading=null;
 disconnectsubscription:any;
 public registerationform:FormGroup;
 error_messages={
@@ -148,16 +149,16 @@ register(dataa){
    
    if(data=='RegisterSuccessful'){
      this.navctrl.navigateForward(['/'],{replaceUrl:true});
-     this.loader.dismiss()
+     this.loading.dismiss()
    }else{
-     this.loader.dismiss();
+     this.loading.dismiss();
 this.showalert();
    }
    })
 }
 async presentLoading(){
-  const loading=await this.loader.create({message:"registering user please wait",cssClass:'custom-loader-class'})
-await loading.present();
+ this.loading=await this.loader.create({message:"registering user please wait",cssClass:'custom-loader-class'})
+await this.loading.present();
 }
 async showalert(){
   let alert = await this.alertCtrl.create({

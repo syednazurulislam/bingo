@@ -14,20 +14,28 @@ import{Storage}from '@ionic/storage';
 export class P2boardcreationPage implements OnInit {
   url:string;
   playertwoboard=[];
-  
+  BoardId:any;
 roomid:any;
 i:any=1;
 dataexists:boolean;
-fa:any ; fb:any; fc:any; fd:any; fe:any;
-ga:any; gb:any; gc:any; gd:any; ge:any;
-ha:any; hb:any; hc:any; hd:any; he:any;
-ia:any; ib:any; ic:any; id:any; ie:any;
-ja:any; jb:any; jc:any; jd:any; je:any;
+fa:any=''; fb:any=''; fc:any=''; fd:any=''; fe:any='';
+ga:any=''; gb:any=''; gc:any=''; gd:any=''; ge:any='';
+ha:any=''; hb:any=''; hc:any=''; hd:any=''; he:any='';
+ia:any=''; ib:any=''; ic:any=''; id:any=''; ie:any='';
+ja:any=''; jb:any=''; jc:any=''; jd:any=''; je:any='';
 b1:boolean;
-disconnectsubscription:any;
 // array1=['fa','fb','fc','fd','fe', 'ga','gb','gc','gd','ge','ha','hb','hc','hd','he','ia','ib','ic'
 // ,'id','ie','ja','jb','jc','jd','je'];
- bingotable:any = {};
+ bingotable:any = {fa:'',fb:'',fc:'',fd:'',fe:'',
+                   ga:'',gb:'',gc:'',gd:'',ge:'',
+                   ha:'',hb:'',hc:'',hd:'',he:'',
+                   ia:'',ib:'',ic:'',id:'',ie:'',
+                   ja:'',jb:'',jc:'',jd:'',je:''};
+// b1:boolean;
+disconnectsubscription:any;
+loading=null;
+// array1=['fa','fb','fc','fd','fe', 'ga','gb','gc','gd','ge','ha','hb','hc','hd','he','ia','ib','ic'
+// ,'id','ie','ja','jb','jc','jd','je'];
  mgs:any={};
   constructor(public navCtrl: NavController,
               public alertctrl:AlertController,
@@ -40,6 +48,7 @@ disconnectsubscription:any;
 
     this.url=url;
     this.roomid=this.PlayertwoService.roomid;
+    this.BoardId=this.PlayertwoService.BoardId;
     this.PlayertwoService.p2socketconnection=true;
   }
   myFunction(x) {
@@ -73,7 +82,6 @@ disconnectsubscription:any;
       this.hd=this.bingotable.hd;
       this.he=this.bingotable.he;
 
-
       this.ia=this.bingotable.ia;
       this.ib=this.bingotable.ib;
       this.ic=this.bingotable.ic;
@@ -95,12 +103,12 @@ disconnectsubscription:any;
   if(this.network.type=='none'){
     this.alertpresent('Please Check Your Internet Connection');
   }else{
- 
-  if(JSON.stringify(this.bingotable).length==192){
+  if(JSON.stringify(this.bingotable).includes("25")){
     this.presentLoading().then(()=>{
       var data={
         RoomId:this.roomid,
-        PlayerTwoBoard:this.playertwoboard
+        PlayerTwoBoard:this.playertwoboard,
+        BoardId:this.BoardId
       }
       this.storage.get("usertoken").then(val=>{
          
@@ -110,13 +118,14 @@ disconnectsubscription:any;
     
       this.https.post(this.url+"/api/updatebingoboard",data,httpoptions).subscribe(result=>{
     this.mgs=result;
+    console.log(this.mgs);
     if(this.mgs.mgs =="Successfully"){
-    var p2dashboard={PlayerTwoBoard:this.mgs.PlayerTwoBoard,RoomId:this.roomid};
-    this.loader.dismiss();
+    var p2dashboard={PlayerTwoBoard:this.mgs.PlayerTwoBoard,RoomId:this.roomid,BoardId:this.mgs.BoardId};
+    this.loading.dismiss();
     this.navCtrl.navigateForward(['/p2gameboard'],{replaceUrl:true})
     this.PlayertwoService.storage=p2dashboard;
     }else if(this.mgs.mgs=="Sorry some one already entered into game"){
-      this.loader.dismiss();
+      this.loading.dismiss();
     this.navCtrl.navigateBack(['/waitingplayerslist'],{replaceUrl:true});
     }
       })
@@ -133,12 +142,12 @@ disconnectsubscription:any;
 }
 
 async presentLoading(){
-  const loading=await this.loader.create({
+  this. loading=await this.loader.create({
     spinner:null,
     translucent:true,
     message:"please wait ",cssClass:'custom-loader-class'
   })
-await loading.present();
+await this.loading.present();
 }
 
 async showAlert(msg){

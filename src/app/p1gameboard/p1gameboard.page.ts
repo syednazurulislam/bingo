@@ -30,6 +30,7 @@ let url = environment.url;
   p1submit = 'submitbutton button3';
   p2submit = 'submitbutton button3';
 url:string;
+loading=null;
   readylength=0;
   bingotable: any = {};
   roomid: any;
@@ -357,16 +358,16 @@ deletetable(){
 
   this.https.post(this.url+"/api/destroy",data, httpoptions).subscribe(result=>{
     if(result=='deleted'){
-this.loader.dismiss();
+this.loading.dismiss();
     }else if(result =='somethingwentwrong'){
-this.loader.dismiss();
+this.loading.dismiss();
     }
 
 })
 }
 async presentLoading(){
-  const loading=await this.loader.create({message:"please wait ",cssClass:'custom-loader-class alert-message '});
-await loading.present();
+  this.loading=await this.loader.create({message:"please wait ",cssClass:'custom-loader-class alert-message '});
+await this.loading.present();
 }
 
 }

@@ -12,7 +12,7 @@
 </ion-refresher>
     <ion-searchbar class="button1" (ionInput)="getItems($event)"></ion-searchbar>
     <ion-list>
-      <ion-item   class="button2" *ngFor="let item of items" (click)="joinbingotable(item._id)">
+      <ion-item   class="button2" *ngFor="let item of items" (click)="joinbingotable(item._id,item.BoardId)">
       {{ item.BoardId }}  
       </ion-item>
     </ion-list>

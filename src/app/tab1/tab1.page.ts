@@ -22,6 +22,7 @@ export class Tab1Page {
   phonenumber:string;
   totalgames:number;
   newresponse:any;
+  loading=null
   constructor(public network:Network,
              public https:HttpClient,
              public storage:Storage,
@@ -53,17 +54,16 @@ this.newresponse=result;
 logout(){
  this.showloaderr();
   this.storage.remove("usertoken").then(res=>{
-    alert(res);
-    this.loader.dismiss();
+    this.loading.dismiss();
     this.router.navigate(['/login'],{replaceUrl:true});
   })
 }
 async showloaderr(){
-  let loading= await this.loader.create({
+  this.loading= await this.loader.create({
     message:'please wait',
     cssClass:'custom-loader-class'
   })
-  await loading.present()
+  await this.loading.present()
 }
 
 }

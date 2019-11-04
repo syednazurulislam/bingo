@@ -14,7 +14,7 @@ let url = environment.url;
   styleUrls: ['./p1boardcreation.page.scss'],
 })
 export class P1boardcreationPage implements OnInit {
-  
+  loading=null;
   keyboard: any;
   url:string;
   serverdata={};
@@ -28,15 +28,19 @@ otp1:any;
 otp2:any;
 otp3:any;
 otp4:any;
-fa:any; fb:any; fc:any; fd:any; fe:any;
-ga:any; gb:any; gc:any; gd:any; ge:any;
-ha:any; hb:any; hc:any; hd:any; he:any;
-ia:any; ib:any; ic:any; id:any; ie:any;
-ja:any; jb:any; jc:any; jd:any; je:any;
+fa:any=''; fb:any=''; fc:any=''; fd:any=''; fe:any='';
+ga:any=''; gb:any=''; gc:any=''; gd:any=''; ge:any='';
+ha:any=''; hb:any=''; hc:any=''; hd:any=''; he:any='';
+ia:any=''; ib:any=''; ic:any=''; id:any=''; ie:any='';
+ja:any=''; jb:any=''; jc:any=''; jd:any=''; je:any='';
 b1:boolean;
 // array1=['fa','fb','fc','fd','fe', 'ga','gb','gc','gd','ge','ha','hb','hc','hd','he','ia','ib','ic'
 // ,'id','ie','ja','jb','jc','jd','je'];
- bingotable:any = {};
+ bingotable:any = {fa:'',fb:'',fc:'',fd:'',fe:'',
+                   ga:'',gb:'',gc:'',gd:'',ge:'',
+                   ha:'',hb:'',hc:'',hd:'',he:'',
+                   ia:'',ib:'',ic:'',id:'',ie:'',
+                   ja:'',jb:'',jc:'',jd:'',je:''};
  privatekey=false;
  disconnectsubscription:any;
 //  public navCtrl: NavController, public navParams: NavParams,public http:Http, public https:HttpClient
@@ -62,7 +66,7 @@ b1:boolean;
   }
   intializeBackButtonCustomHandler():void{
     this.unsubscribeBackEvent=this.platform.backButton.subscribeWithPriority(999999,()=>{
-      this.loader.dismiss();
+      this.loading.dismiss();
       this.router.navigate(['/home'],{replaceUrl:true});
       
     })
@@ -75,6 +79,7 @@ b1:boolean;
 
   myFunction(x) {
     this.bingotable[x]=this.i;
+    // alert(JSON.stringify(this.bingotable));
     this.playeroneboard.push({position:x,value:this.i})
        this.secondmethod();
        if(this.i<25){
@@ -129,7 +134,7 @@ b1:boolean;
   if(this.network.type=='none'){
     this.alertpresent('Please Check Your Internet Connection');
   }else{
-  if(JSON.stringify(this.bingotable).length==192){
+  if(JSON.stringify(this.bingotable).includes("25")){
     this.presentLoading().then(()=>{
       if(this.privatekeynumber!=""){
         this.serverdata={
@@ -151,7 +156,7 @@ b1:boolean;
            }
            this.https.post(this.url+"/api/createbingoboard",this.serverdata, httpoptions).subscribe(result=>{
              this.playeroneservice.storage=result;
-          this.loader.dismiss();
+          this.loading.dismiss();
          this.navCtrl.navigateForward(['/p1gameboard'],{replaceUrl:true});
         
          
@@ -206,8 +211,8 @@ async showAlert(msg){
 
 }
 async presentLoading(){
-  const loading=await this.loader.create({message:"please wait ",cssClass:'custom-loader-class'});
-await loading.present();
+  this.loading=await this.loader.create({message:"please wait ",cssClass:'custom-loader-class'});
+await this.loading.present();
 }
 
 async alertpresent(mgs){

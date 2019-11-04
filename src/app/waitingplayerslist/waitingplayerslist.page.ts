@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import{HttpClient,HttpHeaders} from '@angular/common/http';
 import { NavController,AlertController} from '@ionic/angular';
 import {PlayertwoService} from '../playertwo.service'
-import {environment} from "../../config/url";
 import { Network } from '@ionic-native/network/ngx';
+
+import {environment} from "../../config/url";
 let url = environment.url;
 
 
@@ -18,6 +19,7 @@ export class WaitingplayerslistPage implements OnInit {
   items1=[];
   disconnectsubscription:any;
 mgs:any;
+BoardId:any;
   constructor(public navCtrl: NavController,public network:Network, public alertController: AlertController,public https:HttpClient,private PlayertwoService:PlayertwoService) {
    
     // this.disconnectsubscription = this.network.onDisconnect().subscribe(()=>{
@@ -61,13 +63,14 @@ mgs:any;
       }
     }
 
-    joinbingotable(roomid){
+    joinbingotable(roomid,BoardId){
       
       //  alert(roomid);
       // this.navCtrl.push(BplayertwoformPage,{"roomid":roomid})
       let headers= new HttpHeaders();
       headers.append('Content-Type','application/json');
-      // alert(roomid);
+      //  alert(BoardId);
+      this.BoardId=BoardId;
       var data={
         roomid:roomid
       }
@@ -78,6 +81,8 @@ mgs:any;
          
         this.navCtrl.navigateForward(['/p2boardcreation'],{replaceUrl:true})
         this.PlayertwoService.roomid=roomid;
+        this.PlayertwoService.BoardId=BoardId;
+
        }else{
         //  alert('inelse');
         this.presentAlertPrompt(result,roomid)
@@ -135,6 +140,7 @@ mgs:any;
             if(privatekey.privatekey==key){
               this.navCtrl.navigateForward(['/p2boardcreation'],{replaceUrl:true})
               this.PlayertwoService.roomid=roomid;
+              this.PlayertwoService.BoardId=this.BoardId;
             }else{
               alert("sorry wrong key")
             }

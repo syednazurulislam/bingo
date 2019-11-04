@@ -19,6 +19,7 @@ export class LoginPage implements OnInit {
   Password:string='';
   url:string;
   disconnectsubscription:any;
+  loadingctrl =null;
 
   constructor(private router:Router ,private loader:LoadingController,private alertctrl:AlertController,private navctrl:NavController,private http:HttpClient,
      private storage:Storage,public authservice:AuthenticationService,public network:Network ){
@@ -48,13 +49,13 @@ export class LoginPage implements OnInit {
        if(response.status=="200"){
          this.storage.set("usertoken", response.token).then((result)=>{
           this.authservice.login();
-          this.loader.dismiss()
+          this.loadingctrl.dismiss()
 
          })
         //  this.navctrl.navigateForward(['/home'])
          
        }else{
-      this.loader.dismiss();
+      this.loadingctrl.dismiss();
       this.showalert(response);
     }
 
@@ -63,8 +64,8 @@ export class LoginPage implements OnInit {
      })
    }
    async presentLoading(){
-    const loading=await this.loader.create({message:"please wait",cssClass:'custom-loader-class'})
-  await loading.present();
+    this.loadingctrl=await this.loader.create({message:"please wait",cssClass:'custom-loader-class'})
+  await this.loadingctrl.present();
   }
   async showalert(msg){
     let alert=  await this.alertctrl.create({
